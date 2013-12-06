@@ -39,11 +39,16 @@
 		
 		function showSchedule(week, weekno, title, details)
 		{
-			/*var d = new moment(dob, "YYYY-MM-DD HH:mm:ss");
+		/*	var d = new moment(dob, "YYYY-MM-DD HH:mm:ss");
 // To get the date as 'Friday 25th January 2013'
-var datestring = d.format("dddd Do MMMM YYYY");
+
+var datestring = d.format("dd MM YYYY");
 */
-			var weekdt = moment(dob).add(week, weekno); console.log("weekdt--"+weekdt._d);
+			var weekdt = moment(dob,["DD-MM-YYYY"]).add(week, weekno); 
+			
+			console.log("dob--"+dob);
+			console.log("weekdt--"+weekdt._d);
+			
 			$('div.schedule>ul').html( $('div.schedule>ul').html() + "<li><div><span class='label label-info' >"+ weekdt._d.getDate() + "-" + monthday[weekdt._d.getMonth()]  + "-" + weekdt._d.getFullYear() +"</span></div><div><strong>"+title+"</strong></div><div>"+details+"</div></li>");
 			console.log(weekdt._d.getDate() + "-" + monthday[weekdt._d.getMonth()]  + "-" + weekdt._d.getFullYear());
 			console.log(title+"::"+details);
